@@ -32,7 +32,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('should display the correct headline', async () => {
-    await expect(home.getHeadline()).toHaveText('Spotting the TimingObjectin the wild');
+    await expect(home.getHeadline()).toHaveText('Spotting the TimingObject in the wild');
 });
 
 test('should go to the first slide', async ({ page }) => {
