@@ -1,6 +1,6 @@
 {
     "directives": {
-        "connect-src": ["wss://matchmaker.suenc.io", "'self'"],
+        "connect-src": ["wss://matchmaker.suenc.io", "https://vimeo.com", "'self'"],
         "default-src": "'none'",
         "font-src": "'self'",
         "img-src": "'self'",
