@@ -1,0 +1,27 @@
+<h2>Beatmatching</h2>
+<div class="stage">
+    <svg class="stage-prop" version="1.1" viewBox="0 0 950 356">
+        <rect
+            *ngFor="let bar of bars$ | async; index as i"
+            class="bar"
+            [class.beat]="i % 8"
+            [attr.height]="bar"
+            stroke-linejoin="round"
+            stroke-width="2"
+            width="8"
+            [attr.x]="i * 20 + 1"
+            [attr.y]="(178 - bar) / 2 + 1"
+        ></rect>
+        <rect
+            *ngFor="let bar of bars$ | async; index as i"
+            class="bar"
+            [class.beat]="i % 8"
+            [attr.height]="bar"
+            stroke-linejoin="round"
+            stroke-width="2"
+            width="8"
+            [attr.x]="(i - 4) * 20 + 1"
+            [attr.y]="178 + (178 - bar) / 2 + 1"
+        ></rect>
+    </svg>
+</div>

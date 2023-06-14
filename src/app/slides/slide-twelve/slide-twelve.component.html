@@ -1,0 +1,12 @@
+<h2>dash.js</h2>
+<!-- prettier-ignore -->
+<vtm-prism language="html" ngPreserveWhitespaces><!-- htmlmin:ignore -->&lt;video id="video"&gt;&lt;/video&gt;
+&lt;script&gt;
+    const player = dashjs.MediaPlayer().create();
+    const $video = document.getElementById('video');
+    player.initialize($video, 'https//your.url', false);
+    setTimingsrc($video, timingObject); // with Suenc
+&lt;/script&gt;<!-- htmlmin:ignore --></vtm-prism>
+<a class="footnote" href="https://reference.dashif.org/dash.js/latest/samples/advanced/timing-object.html"
+    >reference.dashif.org/dash.js/latest/samples/advanced/timing-object.html</a
+>

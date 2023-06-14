@@ -1,11 +1,13 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { EMPTY, Subscription, catchError, filter, from } from 'rxjs';
-import { mediaQueryMatch } from 'subscribable-things';
+import { EMPTY, Subscription, catchError, concat, filter, from, map, of, switchMap, take } from 'rxjs';
+import { animationFrame, mediaQueryMatch, on } from 'subscribable-things';
+import { TimingObjectService } from '../timing-object.service';
 import { WindowService } from '../window.service';
 import { slideAnimation } from './slide.animation';
 
+const EXCLUDED_FORWARD_TRANSITIONS = [4, 5];
 const NO_TRANSITION_PARAMS = { duration: '0s', enterTransform: 'none', leaveTransform: 'none', top: 'auto', width: 'auto' };
 
 @Component({
@@ -27,12 +29,20 @@ export class SlidesComponent implements OnDestroy, OnInit {
 
     private _matchMediaQueryMatchSubscription: null | Subscription;
 
+    private _readySubscription: null | Subscription;
+
     private _routerEventsSubscription: null | Subscription;
 
-    constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _windowService: WindowService) {
+    constructor(
+        private _activatedRoute: ActivatedRoute,
+        private _router: Router,
+        private _timingObjectService: TimingObjectService,
+        private _windowService: WindowService
+    ) {
         this._index = 0;
         this._isPreferingReducedMotion = false;
         this._matchMediaQueryMatchSubscription = null;
+        this._readySubscription = null;
         this._routerEventsSubscription = null;
     }
 
@@ -62,6 +72,7 @@ export class SlidesComponent implements OnDestroy, OnInit {
 
     public ngOnDestroy(): void {
         this._matchMediaQueryMatchSubscription?.unsubscribe();
+        this._readySubscription?.unsubscribe();
         this._routerEventsSubscription?.unsubscribe();
     }
 
@@ -74,6 +85,28 @@ export class SlidesComponent implements OnDestroy, OnInit {
             .pipe(filter((routerEvent) => routerEvent instanceof NavigationEnd))
             .subscribe(() => this._setIndexAndTransition()); // eslint-disable-line rxjs-angular/prefer-async-pipe
 
+        const timingObject = this._timingObjectService.timingObject;
+
+        this._readySubscription = concat(of(null), from(on(timingObject, 'readystatechange')))
+            .pipe(
+                map(() => timingObject.readyState),
+                filter((readyState) => readyState === 'open'),
+                take(1),
+                switchMap(() => animationFrame())
+            )
+            // eslint-disable-next-line rxjs-angular/prefer-async-pipe
+            .subscribe(() => {
+                const { position } = this._timingObjectService.timingObject.query();
+                const index = Math.floor(position / 1000);
+
+                if (index > 0 && this._index !== index) {
+                    this._router.navigate([`${index}`], {
+                        queryParams: this._router.routerState.snapshot.root.queryParams,
+                        relativeTo: this._activatedRoute
+                    });
+                }
+            });
+
         const activatedChildRoute = this._activatedRoute.firstChild;
 
         if (activatedChildRoute !== null) {
@@ -85,14 +118,20 @@ export class SlidesComponent implements OnDestroy, OnInit {
     }
 
     private _goToNextSlide(): void {
-        if (this._index < 2) {
-            this._router.navigate([`${this._index + 1}`], { relativeTo: this._activatedRoute });
+        if (this._index < 26) {
+            this._router.navigate([`${this._index + 1}`], {
+                queryParams: this._router.routerState.snapshot.root.queryParams,
+                relativeTo: this._activatedRoute
+            });
         }
     }
 
     private _goToPreviousSlide(): void {
         if (this._index > 1) {
-            this._router.navigate([`${this._index - 1}`], { relativeTo: this._activatedRoute });
+            this._router.navigate([`${this._index - 1}`], {
+                queryParams: this._router.routerState.snapshot.root.queryParams,
+                relativeTo: this._activatedRoute
+            });
         }
     }
 
@@ -105,7 +144,7 @@ export class SlidesComponent implements OnDestroy, OnInit {
 
             this._index = newIndex;
 
-            if (this._isPreferingReducedMotion) {
+            if (this._isPreferingReducedMotion || (direction === 'forwards' && EXCLUDED_FORWARD_TRANSITIONS.includes(newIndex))) {
                 this.transition = { params: NO_TRANSITION_PARAMS, value: newIndex };
             } else {
                 const nativeWindow = this._windowService.nativeWindow;

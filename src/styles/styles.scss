@@ -36,7 +36,78 @@ h2 {
     font-size: 80%;
 }
 
+li,
+p {
+    color: #fff;
+    font-size: 50%;
+}
+
 body h1:first-child,
 body h2 {
     margin-top: 0;
+}
+
+ul {
+    margin: 0.5em 0;
+    padding: 0 0 0 0.5em;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+a {
+    color: #e86850;
+}
+
+.footnote {
+    color: #fff;
+    display: block;
+    font-size: 30%;
+    margin: 2% auto 0;
+
+    &.centered {
+        margin: 10% auto 0;
+        text-align: center;
+    }
+}
+
+.logo {
+    display: block;
+    margin: 5% auto 0;
+    width: 40%;
+}
+
+.logo.spotterfish {
+    aspect-ratio: 1000/208;
+    background-image: url('../images/spotterfish.png');
+    background-size: contain;
+    margin: 10% auto 0;
+    width: 60%;
+}
+
+.qr-code {
+    aspect-ratio: 1/1;
+    background-image: url('../images/qr-code.png');
+    background-size: contain;
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.player {
+    margin: -3.9vw;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+    color: #e86850;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .player {
+        margin: -6.94vh;
+    }
 }

@@ -1,0 +1,17 @@
+.stage {
+    position: relative;
+}
+
+.stage-prop {
+    position: absolute;
+}
+
+.bar {
+    fill: #e86850;
+    stroke: #e86850;
+}
+
+.bar.beat {
+    fill: #fff;
+    stroke: #fff;
+}

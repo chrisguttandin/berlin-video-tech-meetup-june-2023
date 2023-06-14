@@ -1,0 +1,13 @@
+.canvas {
+    height: calc(100% + 7.8vw);
+    margin: -3.9vw;
+    width: calc(100% + 7.8vw);
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .canvas {
+        height: calc(100% + 13.88vh);
+        margin: -6.94vh;
+        width: calc(100% + 13.88vh);
+    }
+}
