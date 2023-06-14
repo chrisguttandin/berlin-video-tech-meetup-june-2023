@@ -3,6 +3,7 @@
         "connect-src": ["wss://matchmaker.suenc.io", "https://vimeo.com", "'self'"],
         "default-src": "'none'",
         "font-src": "'self'",
+        "frame-src": "https://player.vimeo.com",
         "img-src": "'self'",
         "script-src": "'self'",
         "style-src": ["'self'", "'unsafe-inline'"]
