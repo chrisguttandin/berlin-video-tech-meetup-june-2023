@@ -8,7 +8,7 @@ module.exports = {
         'replace:runtime',
         'clean:runtime',
         'replace:csp-production',
-        // 'sh:prerender',
+        'sh:prerender',
         'htmlmin',
         'replace:manifest'
     ],
