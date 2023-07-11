@@ -76,7 +76,7 @@
         "@types/jasmine": "~4.3.5",
         "@types/prismjs": "^1.26.0",
         "@types/vimeo__player": "^2.18.0",
-        "angular-prerender": "^14.0.5",
+        "angular-prerender": "^14.0.9",
         "axe-core": "^4.7.2",
         "bundle-buddy": "^0.2.2",
         "commitizen": "^4.3.0",
