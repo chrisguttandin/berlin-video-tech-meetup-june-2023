@@ -7,8 +7,8 @@ export class Home {
         return this._page.locator('vtm-app h1');
     }
 
-    public getSubHeadline(): Locator {
-        return this._page.locator('vtm-app h2:first-child');
+    public getNextHeadline(): Locator {
+        return this._page.locator('vtm-app h1').nth(1);
     }
 
     public navigateTo(): Promise<null | Response> {

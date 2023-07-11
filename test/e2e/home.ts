@@ -43,5 +43,5 @@ test('should go to the next slide', async ({ page }) => {
     await page.keyboard.press('ArrowRight');
     await page.waitForURL(/\/slides\/2$/);
 
-    await expect(home.getSubHeadline()).toHaveText('Next Slide');
+    await expect(home.getNextHeadline()).toHaveText('Keepingit allin sync');
 });
