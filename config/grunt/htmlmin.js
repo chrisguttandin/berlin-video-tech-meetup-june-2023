@@ -2,8 +2,8 @@ module.exports = {
     default: {
         files: [
             {
-                cwd: 'build/berlin-video-tech-meetup-june-2023',
-                dest: 'build/berlin-video-tech-meetup-june-2023',
+                cwd: 'build/berlin-video-tech-meetup-june-2023/browser',
+                dest: 'build/berlin-video-tech-meetup-june-2023/browser',
                 expand: true,
                 src: ['**/*.html']
             }

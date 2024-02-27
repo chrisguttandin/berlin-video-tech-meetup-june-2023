@@ -83,7 +83,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: ./build/berlin-video-tech-meetup-june-2023
+                  path: ./build/berlin-video-tech-meetup-june-2023/browser
 
             - id: deployment
               name: Deploy to GitHub Pages

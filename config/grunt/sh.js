@@ -32,11 +32,9 @@ module.exports = (grunt) => {
             cmd: 'npx ng serve'
         },
         'prerender': {
-            cmd: `npx ng run berlin-video-tech-meetup-june-2023:server:production && \
-                npx angular-prerender \
-                    --browser-target berlin-video-tech-meetup-june-2023:build \
-                    --preserve-index-html \
-                    --server-target berlin-video-tech-meetup-june-2023:server`
+            cmd: `npx angular-prerender \
+                --preserve-index-html \
+                --target berlin-video-tech-meetup-june-2023:build`
         },
         'preview': {
             cmd: 'npx ng serve --configuration production'
@@ -50,8 +48,8 @@ module.exports = (grunt) => {
             cmd: 'npx ng test --watch false'
         },
         'verify': {
-            cmd: `npx bundle-buddy build/berlin-video-tech-meetup-june-2023/*.js.map && \
-                grep -r build/**/*.map -e '/environments/environment.ts'; test $? -eq 1`
+            cmd: `npx bundle-buddy build/berlin-video-tech-meetup-june-2023/browser/*.js.map && \
+                grep -r build/berlin-video-tech-meetup-june-2023/browser/*.js.map -e '/environments/environment.ts'; test $? -eq 1`
         }
     };
 };
