@@ -1,9 +1,12 @@
+import { AsyncPipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [AsyncPipe, NgFor],
     selector: 'vtm-slide-five',
+    standalone: true,
     styleUrls: ['./slide-five.component.scss'],
     templateUrl: './slide-five.component.html'
 })

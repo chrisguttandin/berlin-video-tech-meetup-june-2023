@@ -8,6 +8,7 @@ import { TimingObjectService } from '../../timing-object.service';
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'vtm-slide-eighteen',
+    standalone: true,
     templateUrl: './slide-eighteen.component.html'
 })
 export class SlideEighteenComponent implements OnDestroy, OnInit {

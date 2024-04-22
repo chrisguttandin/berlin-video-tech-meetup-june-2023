@@ -1,6 +1,6 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { EMPTY, Subscription, catchError, concat, filter, from, map, of, switchMap, take } from 'rxjs';
 import { animationFrame, mediaQueryMatch, on } from 'subscribable-things';
 import { TimingObjectService } from '../timing-object.service';
@@ -13,6 +13,8 @@ const NO_TRANSITION_PARAMS = { duration: '0s', enterTransform: 'none', leaveTran
 @Component({
     animations: [trigger('transition', [transition('* => *', [useAnimation(slideAnimation)])])],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterLink, RouterOutlet],
+    standalone: true,
     styleUrls: ['./slides.component.scss'],
     templateUrl: './slides.component.html'
 })
