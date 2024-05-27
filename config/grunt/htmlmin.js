@@ -5,7 +5,7 @@ module.exports = {
                 cwd: 'build/berlin-video-tech-meetup-june-2023/browser',
                 dest: 'build/berlin-video-tech-meetup-june-2023/browser',
                 expand: true,
-                src: ['**/*.html']
+                src: ['**/404.html']
             }
         ],
         options: {
