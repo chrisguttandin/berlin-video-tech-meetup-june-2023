@@ -121,7 +121,7 @@
         "url": "https://github.com/chrisguttandin/berlin-video-tech-meetup-june-2023.git"
     },
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "husky",
         "test": "grunt lint && grunt test"
     },
     "version": "0.1.4"
