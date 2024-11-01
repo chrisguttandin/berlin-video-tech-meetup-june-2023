@@ -25,7 +25,7 @@
         "subscribable-things": "^2.1.45",
         "timing-object": "^3.1.85",
         "timing-provider": "^7.1.22",
-        "tslib": "^2.8.0",
+        "tslib": "^2.8.1",
         "zone.js": "^0.14.10"
     },
     "description": "My talk at the Berlin Video Tech Meetup in June 2023.",
