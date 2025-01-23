@@ -8,7 +8,6 @@ import { TimingObjectService } from '../../timing-object.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [AsyncPipe],
     selector: 'vtm-slide-twenty',
-    standalone: true,
     styleUrls: ['./slide-twenty.component.scss'],
     templateUrl: './slide-twenty.component.html'
 })

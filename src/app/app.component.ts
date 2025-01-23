@@ -5,7 +5,6 @@ import { RouterOutlet } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [RouterOutlet],
     selector: 'vtm-app',
-    standalone: true,
     templateUrl: './app.component.html'
 })
 export class AppComponent {}

@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [AsyncPipe, NgFor],
     selector: 'vtm-slide-five',
-    standalone: true,
     styleUrls: ['./slide-five.component.scss'],
     templateUrl: './slide-five.component.html'
 })
