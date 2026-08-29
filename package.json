@@ -76,7 +76,7 @@
         "@playwright/test": "^1.62.1",
         "@types/prismjs": "^1.26.6",
         "@types/vimeo__player": "^2.18.3",
-        "@vitest/browser-webdriverio": "^4.1.10",
+        "@vitest/browser-webdriverio": "^4.1.11",
         "angular-eslint": "^21.4.0",
         "axe-core": "^4.13.0",
         "bundle-buddy": "^0.2.2",
