@@ -111,6 +111,7 @@
     "license": "MIT",
     "main": "src/index.html",
     "name": "berlin-video-tech-meetup-june-2023",
+    "packageManager": "npm@12",
     "private": true,
     "repository": {
         "type": "git",
